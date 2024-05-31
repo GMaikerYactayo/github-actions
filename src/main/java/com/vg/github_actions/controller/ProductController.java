@@ -33,7 +33,7 @@ public class ProductController {
 
     @GetMapping("/index")
     public String index() {
-        return "Hello World";
+        return "Hello World using Docker";
     }
 
 }

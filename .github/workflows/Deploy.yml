@@ -45,3 +45,16 @@ jobs:
 
       - name: Test Endpoint
         run: curl http://localhost:8080/api/v1/index
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build service image
+        run: |
+          docker build --platform linux --tag maikergonzales/product-service:v1 -f Dockerfile .
+
+      - name: Publish service image
+        run: docker push maikergonzales/product-service:v1
