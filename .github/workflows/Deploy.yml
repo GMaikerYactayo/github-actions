@@ -3,6 +3,11 @@ on:
   push:
     branches: [ master ]
 
+env:
+  DATASOURCE_URL: jdbc:mysql://localhost:3306/product_service_db
+  DATASOURCE_USERNAME: root
+  DATASOURCE_PASSWORD: root
+
 jobs:
   build:
     runs-on: ubuntu-latest
