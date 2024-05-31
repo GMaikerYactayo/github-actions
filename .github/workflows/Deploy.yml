@@ -54,7 +54,7 @@ jobs:
 
       - name: Build service image
         run: |
-          docker build --platform linux --tag maikergonzales/product-service:v1 -f Dockerfile .
+          docker build --tag maikergonzales/product-service:v1 -f Dockerfile .
 
       - name: Publish service image
         run: docker push maikergonzales/product-service:v1
