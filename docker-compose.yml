@@ -1,15 +1,6 @@
 version: '3.8'
 
 services:
-  mysql:
-    image: mysql:latest
-    container_name: mysql-container
-    environment:
-      MYSQL_DATABASE: product_service_db
-      MYSQL_ROOT_PASSWORD: root
-    ports:
-      - "3306:3306"
-
   product-service:
     image: product-service
     container_name: product-service-container
@@ -21,6 +12,15 @@ services:
     depends_on:
       - mysql
     environment:
-      DATASOURCE_URL: jdbc:mysql://mysql:3306/product_service_db
-      DATASOURCE_USERNAME: root
-      DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/product_service_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql-container
+    environment:
+      MYSQL_DATABASE: product_service_db
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
